@@ -1,9 +1,7 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import {
   Dimensions,
   StyleSheet,
-  ScrollView,
   View,
   Text,
   Image
@@ -55,7 +53,7 @@ export default function Menu({ onItemSelected }) {
         source={{uri : "https://facebook.github.io/react-native/docs/assets/favicon.png"}}     
         style={styles.profile_image}/>
       <Text
-        onPress={() => onItemSelected('Contacts')}
+        onPress={() => onItemSelected('homework')}
         style={styles.item}>
         Homework
       </Text>
@@ -63,7 +61,7 @@ export default function Menu({ onItemSelected }) {
 
     <View>        
       <Text
-        onPress={() => onItemSelected('About')}
+        onPress={() => onItemSelected('timetable')}
         style={styles.item}>
         Timetable
       </Text>
@@ -71,7 +69,7 @@ export default function Menu({ onItemSelected }) {
 
     <View>
       <Text
-        onPress={() => onItemSelected('Contacts')}
+        onPress={() => onItemSelected('exam')}
         style={styles.item}>
         Exams
       </Text>
@@ -79,7 +77,7 @@ export default function Menu({ onItemSelected }) {
 
     <View>
       <Text
-        onPress={() => onItemSelected('Contacts')}
+        onPress={() => onItemSelected('clubssocieties')}
         style={styles.item}>
         Clubs and Societies
       </Text>

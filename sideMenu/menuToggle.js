@@ -6,4 +6,5 @@ export function updateMenuState(isOpen){
 }
 export function onMenuItemSelected(item){
     this.setState({isOpen: false, selectedItem: item})
+    this.props.navigator.replace({ id: item });
 }
