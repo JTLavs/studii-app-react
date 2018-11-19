@@ -1,18 +1,46 @@
 import React from 'react'
-import { DrawerNavigator } from 'react-navigation';
+import { DrawerNavigator, StackNavigator, HeaderBackButton} from 'react-navigation';
 import Profile from './Profile';
 import Homework from './homeworks/homework-view'
-const MyApp = DrawerNavigator({
-    Homework: {
-      screen: Homework,
+import add from './add-component/add'
+
+const HomeworkStack = StackNavigator({
+  screen: Homework
+})
+const ProfileStack = StackNavigator({
+  screen: Profile
+})
+export const theDrawer = DrawerNavigator({
+  Homework: { screen: HomeworkStack },
+  Profile: { screen: ProfileStack }
+});
+
+export const MainStack = StackNavigator(
+  {
+    Drawer: {
+      screen: theDrawer,
+      navigationOptions: {
+        header:null
+      }
     },
-    Profile: {
-      screen: Profile,
+    Add: {
+      screen: add,
+      navigationOptions: ({navigation}) => ({
+        title: 'Add Homework',
+        headerLeft: <HeaderBackButton onPress={() => navigation.goBack(null)}/>,
+        headerStyle: {
+          backgroundColor: 'orange',
+        },
+        headerTitleStyle: {
+          color: 'white',
+        },
+      })
     },
-  });
+  }
+)
 
 export default class App extends React.Component {
 	render() {
-		return <MyApp />;
+		return <MainStack />;
 	}
 }

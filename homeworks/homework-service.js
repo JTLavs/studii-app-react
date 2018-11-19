@@ -3,13 +3,13 @@ var homeworks = [
             subject: 'Maths',
             description: 'Do times tables',
             done: false,
-            dueDate: Date('2017-01-01')
+            dueDate: '1995-12-17'
         },
         {
             subject: 'English',
             description: 'Read To Kill A Mockingbird',
             done: true,
-            dueDate: Date('2017-01-02')
+            dueDate: '1995-12-18'
         }
 ]
 
@@ -28,6 +28,10 @@ export function getStatus(done){
 
 function sortByDate(){
     homeworks.sort(function compare(a,b){
-        return a.dueDate - b.dueDate;
+        return new Date(a.dueDate) - new Date(b.dueDate);
     })
+}
+
+export function addHomework(aSubject, aDescription){
+    homeworks.push({subject: aSubject, description: aDescription, done: false, dueDate : '1998-07-06'})
 }

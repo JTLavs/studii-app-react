@@ -8,12 +8,13 @@ export default class HomeworkList extends React.Component {
     var homeworks = getHomeworks();
     this.state = { homeworks : homeworks }
     this.getStatus = getStatus.bind(this)
+    this.formatDate = this.formatDate.bind(this)
   }
 
   render() {
     return (
-        <View style={styles.container}>
-          <FlatList style={styles.list} data={this.homeworks}
+        <View>
+          <FlatList style={styles.list} data={this.state.homeworks}
               renderItem = {({item}) => 
               <View style={styles.listitem}>
                 <View>
@@ -23,11 +24,31 @@ export default class HomeworkList extends React.Component {
                     <Text>
                       {item.description}
                     </Text>
+                    <Text>
+                      {this.formatDate(item.dueDate)}
+                    </Text>
                 </View>
-                <Text style={status}>{this.getStatus(item.done)}</Text>
+                <Text style={styles.status}>{this.getStatus(item.done)}</Text>
               </View>}/>
           </View>
     );
+  }
+
+  formatDate(dueDate){
+    var days = ['Mon', 'Tue', 'Wed', 'Thurs', 'Fri', 'Sat']
+    var months = ['Jan', 'Feb', 'March', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec']
+    var dateObj = new Date(dueDate);
+    return days[dateObj.getDay()] + ' ' + dateObj.getDate() + ' ' 
+          + months[dateObj.getMonth()] + ' ' + dateObj.getFullYear()
+  }
+
+  getOrdinalOfDate(date){
+    switch(date % 10){
+      case 1 : return 'st';
+      case 2 : return 'nd';
+      case 3 : return 'rd';
+      default: return 'th';
+    }
   }
 }
 

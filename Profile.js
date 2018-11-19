@@ -5,18 +5,16 @@ export default class Profile extends React.Component {
   constructor(props){
     super(props);
 
-    this.state = {
-      isOpen:false,
-      selectedItem: 'About'
-    }
   }
 
   static navigationOptions = {
-    drawerLabel: 'Profile',
-  }
-
-
-
+    label: 'Profile',
+    title: "Profile",
+    headerStyle: {
+      backgroundColor: 'orange',
+      marginTop: 0
+    },
+}
 
   render() {
     return (
@@ -29,7 +27,6 @@ export default class Profile extends React.Component {
               <Text>{item.subject}</Text>
               <Text style={{marginLeft:'auto'}}>{item.score}</Text>
               </View>}/>
-          <Button onPress={this.toggle} title="Open Menu">Open Menu</Button>
           </View>
     );
   }
@@ -38,7 +35,7 @@ export default class Profile extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop:60,
+    paddingTop:10,
     backgroundColor: '#fff',
     alignItems: 'center'
   },
