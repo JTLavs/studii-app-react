@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image, FlatList, Button } from 'react-native';
+import {Header} from 'react-native-elements'
 
 export default class Profile extends React.Component {
   constructor(props){
@@ -8,25 +9,25 @@ export default class Profile extends React.Component {
   }
 
   static navigationOptions = {
-    label: 'Profile',
-    title: "Profile",
-    headerStyle: {
-      backgroundColor: 'orange',
-      marginTop: 0
-    },
-}
+    header:null
+  }
 
   render() {
     return (
-        <View style={styles.container}>
-          <Text style={styles.welcome_message}>Hello James</Text>
-          <Image source={{uri : "https://facebook.github.io/react-native/docs/assets/favicon.png"}} style={styles.profile_image}/>
-          <FlatList style={styles.list} data={[{subject : 'Maths', score:100}, {subject: 'English', score:50}, {subject: 'Science', score:40}] }
-              renderItem = {({item}) => 
-              <View style={styles.listitem}>
-              <Text>{item.subject}</Text>
-              <Text style={{marginLeft:'auto'}}>{item.score}</Text>
-              </View>}/>
+        <View>
+          <Header leftComponent={{ icon: 'menu', color: '#fff' }}
+                  centerComponent={{ text: 'Profile', style: { color: '#fff' } }}
+                  rightComponent={{ icon: 'home', color: '#fff' }}/>
+          <View style={styles.container}>
+            <Text style={styles.welcome_message}>Hello James</Text>
+            <Image source={{uri : "https://facebook.github.io/react-native/docs/assets/favicon.png"}} style={styles.profile_image}/>
+            <FlatList style={styles.list} data={[{subject : 'Maths', score:100}, {subject: 'English', score:50}, {subject: 'Science', score:40}] }
+                renderItem = {({item}) => 
+                <View style={styles.listitem}>
+                  <Text>{item.subject}</Text>
+                  <Text style={{marginLeft:'auto'}}>{item.score}</Text>
+                </View>}/>
+            </View>
           </View>
     );
   }
@@ -34,7 +35,6 @@ export default class Profile extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     paddingTop:10,
     backgroundColor: '#fff',
     alignItems: 'center'
@@ -53,9 +53,9 @@ const styles = StyleSheet.create({
     width:'100%'
   },
   listitem:{
+    flex:1,
     backgroundColor:'gray',
     padding:20,
-    flex:1,
     flexDirection:'row'
   }
 });

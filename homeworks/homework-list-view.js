@@ -14,7 +14,7 @@ export default class HomeworkList extends React.Component {
   render() {
     return (
         <View>
-          <FlatList style={styles.list} data={this.state.homeworks}
+          <FlatList  style={styles.list} data={this.state.homeworks}
               renderItem = {({item}) => 
               <View style={styles.listitem}>
                 <View>

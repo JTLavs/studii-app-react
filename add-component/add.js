@@ -16,6 +16,14 @@ export default class Add extends React.Component {
   render() {
     return (
       <View>
+          <Header
+                centerComponent={{ text: 'MY TITLE', style: { color: '#fff' } }}
+                leftComponent={{ icon: 'chevron-left', color: '#fff', 
+                onPress: () => {
+                  this.props.navigation.goBack(null)
+                  }
+                }}
+                />
             <TextInput 
                 style={{height:40, borderColor:'gray', borderWidth:1}}
                 onChangeText={(text) =>  this.setState({text})}
@@ -35,6 +43,9 @@ export default class Add extends React.Component {
 
   add(){
       addHomework(this.state.text, this.state.description);
+      console.log('homework pushed')
+      this.props.navigation.state.params.refresh()
+      this.props.navigation.goBack(null)
   }
 }
  
