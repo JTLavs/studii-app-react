@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image, FlatList, Button } from 'react-native';
+import { StyleSheet, Text, View, Image, FlatList} from 'react-native';
 import {Header} from 'react-native-elements'
 
 export default class Profile extends React.Component {
@@ -15,9 +15,9 @@ export default class Profile extends React.Component {
   render() {
     return (
         <View>
-          <Header leftComponent={{ icon: 'menu', color: '#fff' }}
-                  centerComponent={{ text: 'Profile', style: { color: '#fff' } }}
-                  rightComponent={{ icon: 'home', color: '#fff' }}/>
+          <Header backgroundColor='green'
+            leftComponent={{ icon: 'menu', color: '#fff' }}
+            centerComponent={{ text: 'Profile', style: { color: '#fff', fontSize:20 } }}/>
           <View style={styles.container}>
             <Text style={styles.welcome_message}>Hello James</Text>
             <Image source={{uri : "https://facebook.github.io/react-native/docs/assets/favicon.png"}} style={styles.profile_image}/>
@@ -34,7 +34,7 @@ export default class Profile extends React.Component {
 }
 
 const styles = StyleSheet.create({
-  container: {
+  container: { 
     paddingTop:10,
     backgroundColor: '#fff',
     alignItems: 'center'

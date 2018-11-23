@@ -1,51 +1,24 @@
-import React from 'react';
-import {Header} from 'react-native-elements'
-import { View, TextInput, Button } from 'react-native';
-import { addHomework } from '../homeworks/homework-service'
+import React from 'react'
+import AddHomework from './add-homework-view'
+import AddExam from './add-exam-view'
 
 export default class Add extends React.Component {
   constructor(props){
     super(props);
+  }
 
-    this.state = {
-      text: 'Homework Title',
-      description: 'Homework Description'
+  renderView(){
+    const viewType = this.props.navigation.getParam('viewType');
+    if(viewType === 'homework'){
+      return <AddHomework navigation={this.props.navigation}/>
+    }else{
+      return <AddExam navigation={this.props.navigation}/>
     }
   }
 
   render() {
-    return (
-      <View>
-          <Header
-                centerComponent={{ text: 'MY TITLE', style: { color: '#fff' } }}
-                leftComponent={{ icon: 'chevron-left', color: '#fff', 
-                onPress: () => {
-                  this.props.navigation.goBack(null)
-                  }
-                }}
-                />
-            <TextInput 
-                style={{height:40, borderColor:'gray', borderWidth:1}}
-                onChangeText={(text) =>  this.setState({text})}
-                value={this.state.text}/>
-            <TextInput 
-                multiline={true} 
-                numberOfLines={4} 
-                style={{height:40, borderColor:'gray', borderWidth:1}}
-                onChangeText={(description) =>  this.setState({description})}
-                value={this.state.description}/>
-            <Button title='Add' onPress = {()=> this.add()}>
-                Add
-            </Button>
-      </View>
-    );
+    return(this.renderView())
   }
 
-  add(){
-      addHomework(this.state.text, this.state.description);
-      console.log('homework pushed')
-      this.props.navigation.state.params.refresh()
-      this.props.navigation.goBack(null)
-  }
 }
  

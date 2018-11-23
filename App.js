@@ -1,9 +1,11 @@
 import React from 'react'
 import { DrawerNavigator, StackNavigator} from 'react-navigation';
-import {Button} from 'react-native-elements'
 import Profile from './Profile';
+import DrawerContainer from './DrawerContainer'
 import Homework from './homeworks/homework-view'
-import add from './add-component/add'
+import Exam from './exams/exam-view'
+import Add from './add-component/add'
+import Detail from './detail/'
 
 const HomeworkStack = StackNavigator({
   screen: Homework
@@ -11,9 +13,15 @@ const HomeworkStack = StackNavigator({
 const ProfileStack = StackNavigator({
   screen: Profile
 })
+const ExamStack = StackNavigator({
+  screen: Exam
+})
 export const theDrawer = DrawerNavigator({
-  Homework: { screen: HomeworkStack},
-  Profile: { screen: ProfileStack }
+  Homework: { screen: HomeworkStack },
+  Exam: { screen: ExamStack }, 
+  Profile: { screen: ProfileStack },
+}, {
+  contentComponent: DrawerContainer
 });
 
 export const MainStack = StackNavigator(
@@ -23,9 +31,16 @@ export const MainStack = StackNavigator(
       navigationOptions: {
         header:null
       }
+      
     },
     Add: {
-      screen: add,
+      screen: Add,
+      navigationOptions: {
+        header:null
+      }
+    },
+    Detail: {
+      screen: Detail,
       navigationOptions: {
         header:null
       }
