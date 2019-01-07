@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image, FlatList} from 'react-native';
+import { StyleSheet, TouchableHighlight, Text, View, Image, FlatList} from 'react-native';
 import {Header} from 'react-native-elements'
 
 export default class Profile extends React.Component {
@@ -21,12 +21,18 @@ export default class Profile extends React.Component {
           <View style={styles.container}>
             <Text style={styles.welcome_message}>Hello James</Text>
             <Image source={{uri : "https://facebook.github.io/react-native/docs/assets/favicon.png"}} style={styles.profile_image}/>
-            <FlatList style={styles.list} data={[{subject : 'Maths', score:100}, {subject: 'English', score:50}, {subject: 'Science', score:40}] }
+            <FlatList style={styles.list} data={[{name : 'Maths', score:100}, {name: 'English', score:50}, {name: 'Science', score:40}] }
                 renderItem = {({item}) => 
+                <TouchableHighlight onPress={() => this.props.navigation.navigate('Detail', 
+                {
+                viewType: 'subject',
+                item: item
+                })}>
                 <View style={styles.listitem}>
-                  <Text>{item.subject}</Text>
+                  <Text>{item.name}</Text>
                   <Text style={{marginLeft:'auto'}}>{item.score}</Text>
-                </View>}/>
+                </View>
+                </TouchableHighlight>}/>
             </View>
           </View>
     );
@@ -54,7 +60,7 @@ const styles = StyleSheet.create({
   },
   listitem:{
     flex:1,
-    backgroundColor:'gray',
+    backgroundColor:'#eaeaea',
     padding:20,
     flexDirection:'row'
   }

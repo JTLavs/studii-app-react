@@ -9,24 +9,23 @@ export default class ExamDetail extends React.Component {
     this.state = {exam : this.props.item}
   }
 
-  static navigationOptions = {
-    header:null
-  }
-
   render() {
     return (
           <View style={styles.container}>
             <Text style={styles.title}>
                 {this.state.exam.title}
             </Text>
+            <Text>
+              Revision checklist: 
+            </Text>
             <FlatList style={styles.list} data={this.state.exam.checklist}
                 renderItem = {({item}) => 
                 <View style={styles.listitem}>
                   <Text>
-                    {item.title}
+                    {item.name}
                 </Text>
-                <Text style={{marginLeft:'auto'}}>
-                    {item.done}
+                <Text>
+                    {item.done.toString()}
                 </Text>
                 </View>}/>
             </View>
@@ -38,7 +37,8 @@ const styles = StyleSheet.create({
   container: {
     paddingTop:10,
     backgroundColor: '#fff',
-    alignItems: 'center'
+    alignItems: 'center',
+    flex:1
   },
   profile_image: {
     height:100,
@@ -54,9 +54,8 @@ const styles = StyleSheet.create({
     width:'100%'
   },
   listitem:{
-    flex:1,
-    backgroundColor:'gray',
     padding:20,
-    flexDirection:'row'
+    flexDirection:'row',
+    justifyContent: 'space-between'
   }
 });

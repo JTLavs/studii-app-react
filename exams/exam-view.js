@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet, FlatList, Text } from 'react-native'
+import { View, StyleSheet, FlatList, Text, TouchableHighlight } from 'react-native'
 import { Header } from 'react-native-elements'
 import { getExams } from './exam-service';
 import { formatDate } from '../DateHelper'
@@ -34,14 +34,21 @@ export default class HomeworkView extends React.Component {
           underlayColor: 'green'}}/>
          <View>
           <FlatList data={this.state.exams} extraData={this.state} style={styles.list} 
-              renderItem = {({item}) => 
+              renderItem = {({item}) =>
+              <TouchableHighlight onPress={() => this.props.navigation.navigate('Detail', 
+              {
+                viewType: 'exam',
+                item: item
+              })}>
               <View style={styles.listitem}>
                 <View>
                   <Text style={styles.homeworktitle}>{item.subject}</Text>
                   <Text>{item.title}</Text>
                   <Text>{formatDate(item.date)}</Text>
                 </View>
-              </View>}/>
+              </View>
+              </TouchableHighlight>}
+              />
           </View>
       </View>
     );

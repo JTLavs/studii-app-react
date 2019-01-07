@@ -8,10 +8,6 @@ export default class HomeworkDetail extends React.Component {
     this.state = {homework : this.props.item}
   }
 
-  static navigationOptions = {
-    header:null
-  }
-
   render() {
     return (
           <View style={styles.container}>

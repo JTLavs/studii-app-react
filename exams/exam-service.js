@@ -4,20 +4,22 @@ var exams = [
             title: 'Do times tables',
             date: '1995-12-17',
             checklist: [
-                {item: 'exItem1', done:false},
-                {item: 'exItem2', done:false},
-                {item: 'exItem3', done:false}
-            ]
+                {name: 'exItem1', done:false},
+                {name: 'exItem2', done:false},
+                {name: 'exItem3', done:false}
+            ],
+            score: -1
         },
         {
             subject: 'English',
             title: 'Read To Kill A Mockingbird',
             date: '1995-12-18',
             checklist: [
-                {item: 'exItem1', done:false},
-                {item: 'exItem2', done:false},
-                {item: 'exItem3', done:false}
-            ]
+                {name: 'exItem1', done:false},
+                {name: 'exItem2', done:false},
+                {name: 'exItem3', done:false}
+            ],
+            score: -1
         }
 ]
 
@@ -33,6 +35,14 @@ function sortByDate(){
     })
 }
 
-export function addHomework(aSubject, aDescription){
-    exams.push({subject: aSubject, description: aDescription, done: false, dueDate : '1998-07-06'})
+export function addExam(aSubject, aDescription,aChecklist){
+    exams.push({subject: aSubject, 
+        description: aDescription,
+        checklist: aChecklist, 
+        done: false, 
+        dueDate : '1998-07-06'})
+}
+
+export function getExamsBySubject(aSubject){
+    return exams.filter(x => x.subject == aSubject)
 }

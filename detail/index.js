@@ -3,11 +3,16 @@ import {View} from 'react-native'
 import {Header} from 'react-native-elements'
 import HomeworkDetail from './homework'
 import ExamDetail from './exam'
+import SubjectDetail from './subject';
 
 export default class Detail extends React.Component {
   constructor(props){
     super(props);
-    this.state = {color: 'orange', title: 'Homework'}
+    this.state = {color: 'orange', title: this.props.navigation.getParam('viewType')}
+  }
+
+  static navigationOptions = {
+    header:null
   }
 
   renderView(){
@@ -15,11 +20,13 @@ export default class Detail extends React.Component {
     const item = this.props.navigation.getParam('item')
     if(viewType === 'homework'){
       return <HomeworkDetail navigation={this.props.navigation} item={item}/>
-    }else{
-      this.setState({backgroundColor: 'green', title: 'Exam'})
+    }else if(viewType === 'exam'){
       return <ExamDetail navigation={this.props.navigation} item={item}/>
+    }else{ 
+      return <SubjectDetail navigation={this.props.navigation} item={item}/>
     }
   }
+  
 
   render() {
     return(
