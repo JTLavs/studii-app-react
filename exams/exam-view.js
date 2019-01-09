@@ -26,23 +26,23 @@ export default class HomeworkView extends React.Component {
           leftComponent={{ icon: 'menu', color: '#fff' }}
           centerComponent={{ text: 'Exams', style: { color: '#fff', fontSize:20 }}}
           rightComponent={{ icon: 'add', color: '#fff',
-          onPress: () => this.props.navigation.navigate('Add', 
+          onPress: () => this.props.navigation.navigate('Add',
           {
             viewType: 'exam',
             refresh: this.refreshFunction.bind(this)
           }),
           underlayColor: 'green'}}/>
          <View>
-          <FlatList data={this.state.exams} extraData={this.state} style={styles.list} 
+          <FlatList data={this.state.exams} extraData={this.state} style={styles.list}
               renderItem = {({item}) =>
-              <TouchableHighlight onPress={() => this.props.navigation.navigate('Detail', 
+              <TouchableHighlight onPress={() => this.props.navigation.navigate('Detail',
               {
                 viewType: 'exam',
                 item: item
               })}>
               <View style={styles.listitem}>
                 <View>
-                  <Text style={styles.homeworktitle}>{item.subject}</Text>
+                  <Text style={styles.listTitle}>{item.subject}</Text>
                   <Text>{item.title}</Text>
                   <Text>{formatDate(item.date)}</Text>
                 </View>
@@ -74,4 +74,3 @@ const styles = StyleSheet.create({
       marginLeft:'auto'
     }
 })
- 

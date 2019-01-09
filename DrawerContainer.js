@@ -13,20 +13,22 @@ export default class DrawerContainer extends React.Component {
           Thursday 20th November
         </Text>
       </View>
+
+      <TouchableOpacity>
         <View style={styles.drawerMenuItemContainer}>
             <Text style={{...styles.drawerMenuItemText, color:'red'}}
                 onPress={() => navigation.navigate('Homework')}>
                 Homework
             </Text>
-            <TouchableOpacity>  
-                 <Icon name="description" color="red"/>
-            </TouchableOpacity>
+            <Icon name="description" color="red"/>
         </View>
+        </TouchableOpacity>
+        
         <TouchableOpacity onPress={() => navigation.navigate('Profile')}>
           <View style={styles.drawerMenuItemContainer}>
             <Text style={{...styles.drawerMenuItemText, fontColor:'orange'}}>
                 Profile
-            </Text>  
+            </Text>
             <Icon name="face" color='orange'/>
           </View>
         </TouchableOpacity>
@@ -35,12 +37,12 @@ export default class DrawerContainer extends React.Component {
           <View style={styles.drawerMenuItemContainer}>
             <Text style={{...styles.drawerMenuItemText, color:'green'}}>
                 Exams
-            </Text> 
+            </Text>
             <Icon name="face" color='green'/>
           </View>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={() => navigation.navigate('Homework')}>  
+        <TouchableOpacity onPress={() => navigation.navigate('Homework')}>
           <View style={styles.drawerMenuItemContainer}>
             <Text style={{...styles.drawerMenuItemText, color:'blue'}}>
                 Clubs/Societies
@@ -56,14 +58,14 @@ export default class DrawerContainer extends React.Component {
             </Text>
                 <Icon name="face" color='gray'/>
           </View>
-        </TouchableOpacity> 
+        </TouchableOpacity>
 
         <View style={styles.drawerMenuItemContainer}>
           <Text style={{...styles.drawerMenuItemText, color:'black'}}
               onPress={() => navigation.navigate('Homework')}>
               About Studii
           </Text>
-          <TouchableOpacity>  
+          <TouchableOpacity>
               <Icon name="face" color='black'/>
           </TouchableOpacity>
         </View>
@@ -79,10 +81,10 @@ const styles = StyleSheet.create({
     paddingTop: 20
   },
   drawerMenuItemContainer:{
-    flexDirection:'row', 
-    padding:10, 
+    flexDirection:'row',
+    padding:10,
     marginBottom:5,
-    borderBottomColor:'#f6f6f6', 
+    borderBottomColor:'#f6f6f6',
     borderBottomWidth:2,
     fontWeight: 'bold',
     justifyContent:'space-between'
